@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS planets (
     colors JSONB,
     color_hex JSONB,
     subjects JSONB,
-    painting_url TEXT
+    planets TEXT
 );
