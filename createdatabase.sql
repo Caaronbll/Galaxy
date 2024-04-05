@@ -1,7 +1,7 @@
 -- create_user_and_db.sql
 
 -- Create a test user
-CREATE USER test_user WITH LOGIN PASSWORD 'test1234';
+CREATE USER test_user WITH LOGIN PASSWORD 'test';
 
 -- Grant necessary privileges to the test user
 ALTER ROLE test_user CREATEDB;
