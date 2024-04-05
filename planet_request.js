@@ -1,6 +1,6 @@
 const request = require('request');
 
-const planets = ['Neptune', 'Jupiter', 'Saturn', 'Mars', 'Earth', 'Mercury'];
+const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
 
 planets.forEach(planet => {
   request.get({
