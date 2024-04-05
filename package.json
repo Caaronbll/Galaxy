@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Caaronbll/Galaxy/issues"
   },
-  "homepage": "https://github.com/Caaronbll/Galaxy#readme"
+  "homepage": "https://github.com/Caaronbll/Galaxy#readme",
+  "dependencies": {
+    "fastapi": "^0.0.8",
+    "node.js": "^0.0.1-security",
+    "request": "^2.88.2"
+  }
 }
