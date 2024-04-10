@@ -4,7 +4,7 @@ const db = require('./db');
 // Function to load data from JSON file and insert into database
 function loadData(callback) {
     // Read the JSON file
-    fs.readFile('datasets/filtered_data.json', 'utf8', (err, data) => {
+    fs.readFile('/Users/alexdipboye/Galaxy/DataBase/Extract_and_Transform/planet_data.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading JSON file:', err);
             return;
