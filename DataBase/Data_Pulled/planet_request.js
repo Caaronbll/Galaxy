@@ -1,5 +1,6 @@
 const request = require('request');
-
+const csv = require('csv-parser');
+const mysql = require('mysql');
 const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
 
 planets.forEach(planet => {
