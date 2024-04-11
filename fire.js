@@ -1,6 +1,4 @@
-// Assuming 'firestore' is already initialized as in the previous example
 
-// Example: Retrieve data from Firestore
 const docRef = firestore.collection('planets').doc('earth');
 
 docRef.get().then((doc) => {
