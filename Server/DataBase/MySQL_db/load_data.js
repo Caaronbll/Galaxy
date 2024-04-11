@@ -1,6 +1,6 @@
 const fs = require('fs');
 const mysql = require('mysql');
-const db = require('../db'); // Assuming db.js contains MySQL connection settings
+const db = require('./db'); // Assuming db.js contains MySQL connection settings
 
 // Function to load data from JSON file and insert into database
 function loadData(callback) {
