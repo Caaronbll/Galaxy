@@ -20,6 +20,7 @@
   "dependencies": {
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.1",
+    "eslint": "^9.0.0",
     "express": "^4.19.2",
     "express-winston": "^4.2.0",
     "fastapi": "^0.0.8",

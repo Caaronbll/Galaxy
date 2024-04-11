@@ -1,7 +1,9 @@
 const express = require('express');
 const getEarth = require('./request_planets');
-
+const fs = require('fs');
+const db = require('./db');
 const app = express();
+const mysql = require('mysql');
 
 
 
@@ -15,9 +17,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/earth', (req, res) => {
-  console.log("test result", getEarth)
-  res.send(getEarth);
-  console.log('Earth planet info:', getEarth);
-})
-
-
+  // Assuming you want to perform a MySQL operation here
+  mysql.query('SELECT * FROM earth_data', (error, results, fields) => {
+    if (error) throw error;
+    console.log('Earth data from MySQL:', results);
+    res.json(results); // Sending MySQL data as JSON response
+  });
+});

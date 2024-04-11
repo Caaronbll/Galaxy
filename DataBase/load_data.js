@@ -1,5 +1,6 @@
 const fs = require('fs');
 const db = require('./db');
+const mysql = require('mysql');
 
 // Function to load data from JSON file and insert into database
 function loadData(callback) {
