@@ -1,39 +1,30 @@
 const fs = require('fs');
-const db = require('./db');
 const mysql = require('mysql');
+const db = require('./db'); // Assuming db.js contains MySQL connection settings
 
 // Function to load data from JSON file and insert into database
 function loadData(callback) {
     // Read the JSON file
-    fs.readFile('/Users/alexdipboye/Galaxy/DataBase/Extract_and_Transform/planet_data.json', 'utf8', (err, data) => {
+    fs.readFile('/path/to/planetsdata.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading JSON file:', err);
             return;
         }
 
         // Parse JSON data
-        const planets = JSON.parse(data);
+        const planetsData = JSON.parse(data);
 
         // Insert each planet's data into 'Planets' table
-        planets.forEach(planet => {
-            const {
-                Name,
-                radius,
-                period,
-                temp,
-                distance,
-                surface,
-                lots
-            } = planet;
-
+        for (const planetName in planetsData) {
+            const planet = planetsData[planetName];
             const planetData = {
-                Name,
-                radius,
-                period,
-                temp,
-                distance,
-                surface,
-                lots
+                Name: planet.name,
+                radius: planet.radius,
+                period: planet.period,
+                temp: planet.temperature,
+                distance: planet.distance_light_year,
+                surface: planet.surface_area,
+                lots: planet.Lots
             };
 
             db.query('INSERT INTO Planets SET ?', planetData, (err, result) => {
@@ -43,7 +34,7 @@ function loadData(callback) {
                 }
                 console.log('Inserted planet:', result.insertId);
             });
-        });
+        }
     });
 }
 
