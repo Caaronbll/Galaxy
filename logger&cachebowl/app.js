@@ -7,7 +7,31 @@ const { transports, format } = require("winston");
 const logger = require("./logger");
 const { cacheData, getCachedData } = require('./cache');
 
-// Example: Define routes and cache usage
+// Middleware to log requests
+app.use(
+  expressWinston.logger({
+    winstonInstance: logger,
+    statusLevels: true,
+  })
+);
+
+// Middleware to log errors
+const myFormat = format.printf(({ level, meta, timestamp }) => {
+  return `${timestamp} ${level}: ${meta.message}`;
+});
+
+app.use(
+  expressWinston.errorLogger({
+    transports: [
+      new transports.File({
+        filename: "logsInternalErrors.log",
+      }),
+    ],
+    format: format.combine(format.json(), format.timestamp(), myFormat),
+  })
+);
+
+// Example routes
 app.get("/", (req, res) => {
   // Example: Cache some data
   cacheData('exampleKey', 'exampleData');
@@ -33,30 +57,7 @@ app.get("/error", (req, res) => {
   throw new Error("This is a custom error");
 });
 
-// Middleware to log requests
-app.use(
-  expressWinston.logger({
-    winstonInstance: logger,
-    statusLevels: true,
-  })
-);
-
-// Middleware to log errors
-const myFormat = format.printf(({ level, meta, timestamp }) => {
-  return `${timestamp} ${level}: ${meta.message}`;
-});
-
-app.use(
-  expressWinston.errorLogger({
-    transports: [
-      new transports.File({
-        filename: "logsInternalErrors.log",
-      }),
-    ],
-    format: format.combine(format.json(), format.timestamp(), myFormat),
-  })
-);
-
+// Start server
 app.listen(4000, () => {
   logger.info("Server started on port 4000");
 });
