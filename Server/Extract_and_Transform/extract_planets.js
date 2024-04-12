@@ -47,6 +47,7 @@ function transformPlanets(data) {
         trans_planets[planet]['surface_area'] = surface_area / 12.41;
         // Dividing for lots
         trans_planets[planet]['Lots'] = trans_planets[planet]['surface_area'] * 639370;
+        trans_planets[planet]['Prices'] = 100;
     }
 
     const json_planets = JSON.stringify(trans_planets);
