@@ -45,6 +45,7 @@ function transformPlanets(data) {
         const pi = Math.PI;
         let surface_area = 4 * pi * Math.pow(radius, 2);
         trans_planets[planet]['surface_area'] = surface_area / 12.41;
+        // Dividing for lots
         trans_planets[planet]['Lots'] = trans_planets[planet]['surface_area'] * 639370;
     }
 
