@@ -1,5 +1,5 @@
 const express = require("express");
-const Product = require("../models/planet.model.js");
+const Planet = require("../models/planet.model.js");
 const router = express.Router();
 const {getPlanets, getPlanet, createPlanet, updatePlanet, deletePlanet} = require('../controllers/planet.controller.js');
 
