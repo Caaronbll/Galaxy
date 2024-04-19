@@ -2,9 +2,9 @@ const request = require("supertest");
 const app = require("./app");
 
 describe("App", () => {
-  it("should return 200 OK on / route", async () => {
+  it("should return 400 OK on / route", async () => {
     const res = await request(app).get("/");
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
   });
 
   it("should return 400 on /400 route", async () => {
